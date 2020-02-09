@@ -6,9 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1519784a-0b58-41b1-a901-9ccb86a503dd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/mask.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/mask.kt" afterDir="false" />
-    </list>
+    <list default="true" id="1519784a-0b58-41b1-a901-9ccb86a503dd" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -108,8 +106,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/mask.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="241" column="50" selection-start-line="241" selection-start-column="50" selection-end-line="241" selection-end-column="50" />
+            <state relative-caret-position="258">
+              <caret line="238" selection-start-line="238" selection-end-line="238" />
             </state>
           </provider>
         </entry>
@@ -336,16 +334,15 @@
       <workItem from="1580961878442" duration="4038000" />
       <workItem from="1580971337484" duration="17093000" />
       <workItem from="1581090916130" duration="8713000" />
-      <workItem from="1581217671669" duration="2029000" />
+      <workItem from="1581217671669" duration="2393000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31873000" />
+    <option name="totallyTimeSpent" value="32237000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25767368" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -357,8 +354,8 @@
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4369863" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.43013698" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.37534246" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.43013698" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -386,6 +383,18 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/mask.kt</url>
+          <line>238</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/settings.gradle">
@@ -432,8 +441,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/mask.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="241" column="50" selection-start-line="241" selection-start-column="50" selection-end-line="241" selection-end-column="50" />
+        <state relative-caret-position="258">
+          <caret line="238" selection-start-line="238" selection-end-line="238" />
         </state>
       </provider>
     </entry>

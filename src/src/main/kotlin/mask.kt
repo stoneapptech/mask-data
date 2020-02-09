@@ -154,7 +154,7 @@ fun notifyDevelopersForMissing(stores: Array<FullStore>) {
                     )
     val text = "The following stores' addresses cannot be parsed, please add manually\n${stores.joinToString(separator = "\n")}"
 
-    val keyFile = File("key.config")
+    val keyFile = File("key-config.json")
     val fileReader = FileReader(keyFile)
     val jsonReader = JsonReader(fileReader)
     val keys = Gson().fromJson<JSONObject>(jsonReader, JSONObject::class.java)
@@ -231,7 +231,7 @@ fun updateGit(dataDir: File) {
     git.add().addFilepattern(".").call()
     git.commit().setMessage("Routine update").call()
 
-    val keyFile = File("key.config")
+    val keyFile = File("key-config.json")
     println(keyFile.exists())
     val fileReader = FileReader(keyFile)
     val jsonReader = JsonReader(fileReader)
