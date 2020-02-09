@@ -232,7 +232,7 @@ fun updateGit(dataDir: File) {
     git.commit().setMessage("Routine update").call()
 
     val keyFile = File("key-config.json")
-    println(keyFile.exists())
+    println(keyFile.absolutePath)
 
     val fileReader = FileReader("key-config.json")
     val jsonReader = JsonReader(fileReader)
@@ -243,7 +243,7 @@ fun updateGit(dataDir: File) {
             UsernamePasswordCredentialsProvider(keys.getString("git-account"), keys.getString("git-pass"))
         )
         .call()
-    
+
     jsonReader.close()
     fileReader.close()
 }
