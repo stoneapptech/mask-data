@@ -225,7 +225,7 @@ fun generateMaskNumber(dataDir: File, stores: Array<FullStore>) {
 }
 
 fun updateGit(dataDir: File) {
-    
+
     val git = Git.open(dataDir)
 
     git.add().addFilepattern(".").call()
@@ -235,7 +235,9 @@ fun updateGit(dataDir: File) {
     val fileReader = FileReader(keyFile)
     val jsonReader = JsonReader(fileReader)
     val keys = Gson().fromJson<JSONObject>(jsonReader, JSONObject::class.java)
-
+    jsonReader.close()
+    fileReader.close()
+    println(keys.toString())
 
     git.push()
         .setCredentialsProvider(
