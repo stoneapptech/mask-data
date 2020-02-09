@@ -6,6 +6,15 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import com.google.gson.stream.JsonReader
+import com.mailjet.client.MailjetClient
+import com.mailjet.client.MailjetRequest
+import com.mailjet.client.resource.Email
+import com.mailjet.client.resource.Emailv31
+import org.eclipse.jgit.api.Git
+import org.eclipse.jgit.internal.storage.file.FileRepository
+import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider
+import org.json.JSONArray
+import org.json.JSONObject
 import java.io.File
 import java.io.FileOutputStream
 import java.io.FileReader
@@ -43,6 +52,10 @@ fun main(args: Array<String>) {
 
     print("Generating mask_number files... ")
     generateMaskNumber(dataDir, stores)
+    println("Done")
+
+    print("Git updaing...")
+    updateGit(dataDir)
     println("Done")
 
 }
@@ -121,38 +134,46 @@ fun createStoreFile(dataDir: File, store: FullStore) {
 }
 
 fun notifyDevelopersForMissing(stores: Array<FullStore>) {
-//    if(stores.isEmpty()) {
-//        return
-//    }
-//    println(stores.joinToString())
-//
-//    val receivers = JSONArray().put(
-//                        JSONObject()
-//                            .put("Email", "secminhrian@gmail.com")
-//                            .put("Name", "Developers")
-//                    ).put(
-//                        JSONObject()
-//                            .put("Email", "a91082900@gmail.com")
-//                            .put("Name", "Developers")
-//                    ).put(
-//                        JSONObject()
-//                            .put("Email", "t510599@gmail.com")
-//                            .put("Name", "Developers")
-//                    )
-//    val text = "The following stores' addresses cannot be parsed, please add manually\n${stores.joinToString(separator = "\n")}"
-//
-//    val client = MailjetClient("", "")
-//    val request = MailjetRequest(Emailv31.resource)
-//        .property(Email.FROMEMAIL, "service@stoneapp.tech")
-//        .property(Email.FROMNAME, "Stoneapp Service")
-//        .property(Email.RECIPIENTS, receivers)
-//        .property(Email.SUBJECT, "Store's address parsing error!")
-//        .property(Email.TEXTPART, text)
-//
-//    val response = client.post(request)
-//    println("Email sent")
-//    println(response.status)
-//    println(response.data)
+    if(stores.isEmpty()) {
+        return
+    }
+    println(stores.joinToString())
+
+    val receivers = JSONArray().put(
+                        JSONObject()
+                            .put("Email", "secminhrian@gmail.com")
+                            .put("Name", "Developers")
+                    ).put(
+                        JSONObject()
+                            .put("Email", "a91082900@gmail.com")
+                            .put("Name", "Developers")
+                    ).put(
+                        JSONObject()
+                            .put("Email", "t510599@gmail.com")
+                            .put("Name", "Developers")
+                    )
+    val text = "The following stores' addresses cannot be parsed, please add manually\n${stores.joinToString(separator = "\n")}"
+
+    val keyFile = File("key.config")
+    val fileReader = FileReader(keyFile)
+    val jsonReader = JsonReader(fileReader)
+    val keys = Gson().fromJson<JSONObject>(jsonReader, JSONObject::class.java)
+
+    val client = MailjetClient(keys.getString("api-key"), keys.getString("secret"))
+    jsonReader.close()
+    fileReader.close()
+
+    val request = MailjetRequest(Emailv31.resource)
+        .property(Email.FROMEMAIL, "service@stoneapp.tech")
+        .property(Email.FROMNAME, "Stoneapp Service")
+        .property(Email.RECIPIENTS, receivers)
+        .property(Email.SUBJECT, "Store's address parsing error!")
+        .property(Email.TEXTPART, text)
+
+    val response = client.post(request)
+    println("Email sent")
+    println(response.status)
+    println(response.data)
 }
 
 fun recordTime(dataDir: File, time: Date) {
@@ -203,8 +224,23 @@ fun generateMaskNumber(dataDir: File, stores: Array<FullStore>) {
     }
 }
 
-fun<E> MutableList<E>.removeIndexes(indexes: IntArray) {
-    for(index in indexes) {
-        removeAt(index)
-    }
+fun updateGit(dataDir: File) {
+    
+    val git = Git.open(dataDir)
+
+    git.add().addFilepattern(".").call()
+    git.commit().setMessage("Routine update").call()
+
+    val keyFile = File("key.config")
+    val fileReader = FileReader(keyFile)
+    val jsonReader = JsonReader(fileReader)
+    val keys = Gson().fromJson<JSONObject>(jsonReader, JSONObject::class.java)
+
+
+    git.push()
+        .setCredentialsProvider(
+            UsernamePasswordCredentialsProvider(keys.getString("git-account"), keys.getString("git-pass"))
+        )
+        .call()
 }
+
