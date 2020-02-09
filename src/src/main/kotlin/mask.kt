@@ -157,9 +157,9 @@ fun notifyDevelopersForMissing(stores: Array<FullStore>) {
     val keyFile = File("key-config.json")
     val fileReader = FileReader(keyFile)
     val jsonReader = JsonReader(fileReader)
-    val keys = Gson().fromJson<JSONObject>(jsonReader, JSONObject::class.java)
+    val keys = Gson().fromJson<JsonObject>(jsonReader, JsonObject::class.java)
 
-    val client = MailjetClient(keys.getString("api-key"), keys.getString("secret"))
+    val client = MailjetClient(keys.get("api-key").asString, keys.get("secret").asString)
     jsonReader.close()
     fileReader.close()
 
@@ -236,11 +236,11 @@ fun updateGit(dataDir: File) {
 
     val fileReader = FileReader("key-config.json")
     val jsonReader = JsonReader(fileReader)
-    val keys = Gson().fromJson<JSONObject>(jsonReader, JSONObject::class.java)
+    val keys = Gson().fromJson<JsonObject>(jsonReader, JsonObject::class.java)
 
     git.push()
         .setCredentialsProvider(
-            UsernamePasswordCredentialsProvider(keys.getString("git-account"), keys.getString("git-pass"))
+            UsernamePasswordCredentialsProvider(keys.get("git-account").asString, keys.get("git-pass").asString)
         )
         .call()
 
