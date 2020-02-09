@@ -231,9 +231,6 @@ fun updateGit(dataDir: File) {
     git.add().addFilepattern(".").call()
     git.commit().setMessage("Routine update").call()
 
-    val keyFile = File("key-config.json")
-    println(keyFile.absolutePath)
-
     val fileReader = FileReader("key-config.json")
     val jsonReader = JsonReader(fileReader)
     val keys = Gson().fromJson<JsonObject>(jsonReader, JsonObject::class.java)
