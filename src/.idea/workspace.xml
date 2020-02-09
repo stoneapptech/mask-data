@@ -6,9 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1519784a-0b58-41b1-a901-9ccb86a503dd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/mask.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/mask.kt" afterDir="false" />
-    </list>
+    <list default="true" id="1519784a-0b58-41b1-a901-9ccb86a503dd" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -108,8 +106,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/mask.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="244" selection-start-line="244" selection-end-line="244" />
+            <state relative-caret-position="86">
+              <caret line="238" column="32" lean-forward="true" selection-start-line="238" selection-start-column="32" selection-end-line="238" selection-end-column="32" />
               <folding>
                 <element signature="e#41#410#0" expanded="true" />
               </folding>
@@ -339,16 +337,15 @@
       <workItem from="1580961878442" duration="4038000" />
       <workItem from="1580971337484" duration="17093000" />
       <workItem from="1581090916130" duration="8713000" />
-      <workItem from="1581217671669" duration="2977000" />
+      <workItem from="1581217671669" duration="3266000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32821000" />
+    <option name="totallyTimeSpent" value="33110000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25767368" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -445,8 +442,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/mask.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="244" selection-start-line="244" selection-end-line="244" />
+        <state relative-caret-position="86">
+          <caret line="238" column="32" lean-forward="true" selection-start-line="238" selection-start-column="32" selection-end-line="238" selection-end-column="32" />
           <folding>
             <element signature="e#41#410#0" expanded="true" />
           </folding>
