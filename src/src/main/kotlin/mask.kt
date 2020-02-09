@@ -233,17 +233,18 @@ fun updateGit(dataDir: File) {
 
     val keyFile = File("key-config.json")
     println(keyFile.exists())
-    val fileReader = FileReader(keyFile)
+
+    val fileReader = FileReader("key-config.json")
     val jsonReader = JsonReader(fileReader)
     val keys = Gson().fromJson<JSONObject>(jsonReader, JSONObject::class.java)
-    jsonReader.close()
-    fileReader.close()
-    println(keys.toString())
 
     git.push()
         .setCredentialsProvider(
             UsernamePasswordCredentialsProvider(keys.getString("git-account"), keys.getString("git-pass"))
         )
         .call()
+    
+    jsonReader.close()
+    fileReader.close()
 }
 
